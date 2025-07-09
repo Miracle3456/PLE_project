@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Home{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+    
+</head>
+<body>
+    {%block content%}
+    <div class="form">
+        
+           
+        <fieldset style="display: flex; flex-direction: column;">
+            <form action="" method="post" enctype="multipart/form-data">
+                {%csrf_token%}
+                <label for="id_Name">Name</label>
+                <input type="text" name = "Name" placeholder="Enter Candidate Name" value="{{form.Name.value|default:''}}">
+                
+                <label for="id_SST">Social Studies</label>
+                <input type="text" name="SST" placeholder="Enter Social Studies Marks" value="{{form.SST.value|default:''}}" id="SST">
+
+                <label for="id_eng">Science</label>
+                <input type="text" name="SCI" value="{{form.SCI.value|default:''}}" placeholder="Enter Science Marks" id="SCI">
+
+                <label for="id_eng">English</label>
+                <input type="text"  placeholder="Enter English Marks" value="{{form.ENG.value|default:''}}" name="ENG" id="ENG">
+
+                <label for="id_mtc">Mathematics</label>
+                <input type="text" placeholder="Enter Mathematics Marks" value="{{form.MTC.value|default:''}}" name="MTC" id="MTC">
+
+                <button type="submit">Submit</button>
+                <button type="reset">reset</button>
+            </form>
+        </fieldset>
+        
+    </div>
+    {%endblock%}
+    
+</body>
+</html>

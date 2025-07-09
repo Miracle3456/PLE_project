@@ -1,0 +1,24 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Navbar{%endblock%}</title>
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="item1">
+            <a href="{%url 'home'%}"><h1>Home</h1></a>
+        </div>
+        <div class="item2">
+        <a href="{%url 'students_list'%}"><h1>List</h1></a>
+        </div>
+    </div>
+
+    {%block content%}
+    {%endblock%}
+</body>
+</html>

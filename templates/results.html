@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <a href="{%url 'home'%}"><button>Go Back</button></a>
+    <table border = '1'>
+        <thead >
+            <tr>
+                
+                <th style="border-right: none; border-top: none; border-left: none;">{{student_name}}</th>
+            </tr>
+            <tr>
+                <th>SUBJECT</th>
+                <th>GRADE</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            
+
+            {%for value in result%}
+            <tr>
+                <td>{{value.subject}}</td>
+                <td>{{value.grade}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+        <tfoot>
+            <tr style="font-weight: bold;">
+                <td>TOTAL AGGREGATES</td>
+                <td>{{agg_list}}</td>
+            </tr>
+            <tr style="font-weight: bold;">
+                <td>
+                    GRADE
+                </td>
+                <td style="font-weight: bold;">
+                    {{grade}}
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    <a href="{%url 'generate_pdf'%}">Download</a>
+</body>
+</html>

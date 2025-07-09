@@ -1,0 +1,94 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Student Detail{%endblock%}</title>
+</head>
+<body>
+
+
+{%block content%}
+    <div class="student_detail">
+        
+        <div class="head">
+            <h3>ID:  {{description.id}}</h3>
+            <h3>Name: {{description.Name}}</h3>
+            <h3>Grade: {{description.Grade}}</h3>
+           
+        </div>
+        <div class="table">
+            <table border="1px">
+                <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks(/100)</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {%for grade in grades%}
+                    <tr>
+                        
+                        <td>
+                            Science
+                        </td>       
+                        <td>{{description.SCI}}</td> 
+                        
+                        <td>{{grade.SCI_GRADE}}</td>
+                        
+                                
+                        
+                    </tr>
+                    {%endfor%}
+                    {%for grade in grades%}
+                    <tr>
+                        <td>Social Studies</td>
+                    
+                        <td>{{description.SST}}</td>
+                        
+                        <td>{{grade.SST_GRADE}}</td>
+                        
+                    </tr>
+                    {%endfor%}
+                    {%for grade in grades%}
+                    <tr>
+                        <td>Mathematics</td>
+                        <td>{{description.MTC}}</td>
+                        
+                        <td>{{grade.MTC_GRADE}}</td>
+                        
+                    </tr>
+                    {%endfor%}
+                    {%for grade in grades%}
+                    <tr>
+                        <td>English</td>
+                        
+                        <td>{{description.ENG}}</td>
+                        
+                        <td>{{grade.ENG_GRADE}}</td>
+                        
+
+                        
+                    </tr>
+                    {%endfor%}
+                    {%for grade in grades%}
+                    <tr>
+                        <td style="font-weight: bold;">Total</td>
+                    
+                        <td>{{description.TOTAL}}</td>
+                    
+                        <td> {{description.AGG}}</td>
+                    </tr>
+                {%endfor%}
+                </tbody>
+        </table> 
+        </div>
+        
+    </div>
+   
+{%endblock%}
+</body>
+</html>

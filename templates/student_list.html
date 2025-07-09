@@ -1,0 +1,44 @@
+{%extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Students{%endblock%}</title>
+</head>
+<body>
+{%block content%}
+    <div class="student">
+        <h1>Student List</h1>
+                    <table border="1px ">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th>Aggregates</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {%for obj in student_list%}
+                    <tr>
+                        
+                        <td>{{obj.id}}</td>
+                        
+                        
+                        <td><a href="{%url 'student_detail' obj.pk%}" style="color: black;">{{obj.Name}}</a></td>
+                        
+
+                        
+                        <td>{{obj.AGG}}</td>
+                        
+                        
+                    </tr>
+                    {%endfor%}
+                </tbody>
+            </table>
+{%endblock%}
+        
+    </div>
+</body>
+</html>
