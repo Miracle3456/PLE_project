@@ -1,17 +1,26 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
+    <link rel="stylesheet" href="{%static 'css/signup.css'%}">
 </head>
 <body>
     <div class="signup">
+        
         <div class="form">
+            <h1>SignUp</h1>
             {%csrf_token%}
-            {{form.as_p}}
+            <input type="text" placeholder="Enter Username" name="username" value="{{form.username.value|default:''}}" >
+            <input type="text" placeholder="Enter Password" name = "password1" value="{{form.password1.value|default:''}}">
+            <input type="text" placeholder="Confirm Password" name = "password2" value="{{form.password2.value|default:''}}">
 
             <button type="submit">Submit</button>
+        </div>
+        <div class="form2">
+            <p>Have account | <a href="{%url 'login'%}">Login</a></p>
         </div>
     </div>
 </body>
