@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: ple-django-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn uneb_project.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: uneb_project.settings
+      - key: PYTHON_VERSION
+        value: 3.11
+    staticPublishPath: staticfiles
