@@ -10,11 +10,18 @@ class Student_Model(models.Model):
     AGG = models.IntegerField(null=True)
     TOTAL = models.IntegerField(null=True)
     Grade = models.IntegerField(null=True)
+    Student_image = models.ImageField(null = True , upload_to='images/' , default = 'images/images/profile-icon.jpg')
     Date_Created = models.DateTimeField(auto_now_add=True , null=False)
+
 
 
     def get_absolute_url(self):
         return reverse('student_detail' , args=[self.pk])
+    
+    def __str__(self):
+        return self.Name
+    
+  
     
 
 class GradesModel(models.Model):
@@ -28,3 +35,10 @@ class GradesModel(models.Model):
 
     def get_absolute_url(self):
         return reverse('student_detail' , args=[self.pk])
+
+
+    def __str__(self):
+        return f"{self.student} Marks"
+    
+
+    
