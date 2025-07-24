@@ -1,5 +1,8 @@
 from django.urls import path
 from .views import StudentView , StudentResultView , StudentModelView , StudentDetailView , PdfGenerateView
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('home/' , StudentView.as_view() , name= 'home'),
@@ -8,3 +11,7 @@ urlpatterns = [
     path('studentdetail/<int:pk>' , StudentDetailView.as_view() ,name = 'student_detail'),
     path('generate_pdf/' , PdfGenerateView.as_view() , name = 'generate_pdf')
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL ,document_root = settings.MEDIA_ROOT)

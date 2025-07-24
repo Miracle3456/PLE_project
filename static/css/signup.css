@@ -2,7 +2,8 @@
     display: flex;
     flex-direction: column;
     margin: 0 auto;
-    width: 50%;
+    min-width: 70%;
+    max-width: 80%;
     gap: 10px;
     
 }
@@ -22,6 +23,7 @@ button{
     background-color: green;
     margin: 0 auto;
     transition: transform 0.3s ease-in;
+    color: white;
     
 }
 

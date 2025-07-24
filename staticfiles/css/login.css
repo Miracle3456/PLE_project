@@ -4,13 +4,16 @@ form{
     margin: 0 auto;
     gap: 10px;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
+    max-width: 75%;
+    min-width: 70%;
 }
 
-input{
-    padding: 10px;
-    border-radius: 2px;
+.form input{
+    padding: 15px;
+    border-radius: 5px;
     border: 1px solid;
+    
 }
 
 button{
@@ -18,7 +21,7 @@ button{
     padding: 10px;
     transition: transform 0.3s ease-in;
     color: white;
-    width: 50%;
+    
     margin: 0 auto;
 }
 
@@ -26,14 +29,7 @@ h1{
     text-align: center;
 }
 
-button{
-    width: 30%;
-    text-align: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: 1px;
-    background-color: green;
-}
+
 
 .form-below{
     width: 50%;

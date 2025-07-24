@@ -3,9 +3,12 @@ from django.http import HttpResponse
 from .forms import StudentForm
 from django.shortcuts import render
 from .models import Student_Model , GradesModel
-import pdfkit
+from django.contrib.auth.mixins import LoginRequiredMixin
+#import pdfkit
 
-class StudentView(FormView):
+
+
+class StudentView(LoginRequiredMixin,FormView):
     #model = Student_Model
     template_name = 'index.html'
     form_class = StudentForm
@@ -70,16 +73,18 @@ class StudentView(FormView):
 class StudentResultView(TemplateView):
     template_name = 'results.html'
 
-class StudentModelView(ListView):
+
+
+class StudentModelView(LoginRequiredMixin , ListView):
     model = Student_Model
-    template_name = 'student_list.html'
+    template_name = 'student_list_demo.html'
     context_object_name = 'student_list'
 
     
 
     
 
-class StudentDetailView(DetailView):
+class StudentDetailView(LoginRequiredMixin , DetailView):
     model = Student_Model
     template_name = 'student_detail.html'
     context_object_name = 'description'
@@ -101,6 +106,6 @@ class PdfGenerateView(View):
             'no-outline': None
         }
 
-        pdf = pdfkit.from_url(url , False , options=options)
-        response = HttpResponse(pdf , content_type = 'application/pdf')
-        response['Content-Disposition'] = 'attachment; file_name = "table.pdf"'
+        #pdf = pdfkit.from_url(url , False , options=options)
+        #response = HttpResponse(pdf , content_type = 'application/pdf')
+        #response['Content-Disposition'] = 'attachment; file_name = "table.pdf"'

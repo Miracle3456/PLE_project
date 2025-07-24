@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    {%block extra_css%}
+    <link rel="stylesheet" href="{%static 'css/student_list_demo.css'%}">
+    {%endblock%}
+</head>
+<body>
+    {%block content%}
+    <div class="card-container">
+        {%for obj in student_list%}
+        <div class="card">
+            <a href="{%url 'student_detail' obj.pk%}">
+            <img src="{{obj.Student_image.url}}" alt="">
+            </a>
+            <a href="{%url 'student_detail' obj.pk%}">
+            <h3>
+                
+                {{obj.id}}.{{obj.Name}}
+                
+
+            </h3>
+            </a>
+            
+            <p>
+                
+                Aggregates: {{obj.AGG}}
+                
+            </p>
+            
+        </div>
+        {%endfor%}
+    </div>
+    {%endblock%}
+</body>
+</html>

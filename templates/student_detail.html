@@ -1,10 +1,14 @@
 {%extends 'base.html'%}
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{%block title%}Student Detail{%endblock%}</title>
+    {%block extra_css%}
+    <link rel="stylesheet" href="{%static 'css/detail.css'%}">
+    {%endblock%}
 </head>
 <body>
 
@@ -13,11 +17,18 @@
     <div class="student_detail">
         
         <div class="head">
+            <div class="student-info">
+
+            
             <h3>ID:  {{description.id}}</h3>
             <h3>Name: {{description.Name}}</h3>
             <h3>Grade: {{description.Grade}}</h3>
-           
+            </div>
+            <div class="student-picture" >
+            <img src="{{description.Student_image.url}}" alt="" >
+            </div>
         </div>
+
         <div class="table">
             <table border="1px">
                 <thead>
