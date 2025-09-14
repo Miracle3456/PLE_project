@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="{%static 'css/signup.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="form-1">
@@ -13,8 +14,14 @@
             <h1>Sign Up</h1>
             {%csrf_token%}
             <input type="text" placeholder="Enter Username" name="username" value="{{form.username.value|default:''}}" >
-            <input type="password" placeholder="Enter Password" name="password1" value="{{form.password1.value|default:''}}">
-            <input type="password" placeholder="Confirm Password" name="password2" value="{{form.password2.value|default:''}}">
+            <div class="password-container">
+                <input type="password" placeholder="Enter Password" name="password1" id="password1" value="{{form.password1.value|default:''}}">
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePassword('password1', this)"></i>
+            </div>
+            <div class="password-container">
+                <input type="password" placeholder="Confirm Password" name="password2" id="password2" value="{{form.password2.value|default:''}}">
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePassword('password2', this)"></i>
+            </div>
             <button type="submit">Create Account</button>
         </form>
 
@@ -22,5 +29,20 @@
             <p>Already have an account? <a href="{%url 'login'%}">Login</a></p>
         </div>
     </div>
+    
+    <script>
+        function togglePassword(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
 </body>
 </html>

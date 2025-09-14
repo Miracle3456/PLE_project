@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{%static 'css/login.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     
@@ -14,7 +15,10 @@
             <h1>Login</h1>
             {%csrf_token%}
             <input type="text" placeholder="Enter Username " id="id_username" name="username" value="{{form.username.value|default:''}}">
-            <input type="password" name="password" id="id_password" placeholder="Enter Password" value="{{form.password.value|default:''}}">
+            <div class="password-container">
+                <input type="password" name="password" id="id_password" placeholder="Enter Password" value="{{form.password.value|default:''}}">
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePassword('id_password', this)"></i>
+            </div>
             <button type="submit">Submit</button>
         </form>
 
@@ -23,5 +27,19 @@
         </div>
     </div>
     
+    <script>
+        function togglePassword(inputId, icon) {
+            const passwordInput = document.getElementById(inputId);
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            }
+        }
+    </script>
 </body>
 </html>

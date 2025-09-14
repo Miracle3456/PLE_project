@@ -57,6 +57,28 @@ input {
     font-size: 1rem;
     transition: border-color 0.3s ease;
     outline: none;
+    width: 100%;
+}
+
+/* Password container styles */
+.password-container {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #95a5a6;
+    transition: color 0.3s ease;
+    padding: 5px;
+}
+
+.toggle-password:hover {
+    color: #2c3e50;
 }
 
 input:focus {
