@@ -9,7 +9,7 @@ urlpatterns = [
     path('results/' , StudentResultView.as_view() , name = 'results'),
     path('students/' , StudentModelView.as_view(),name = 'students_list'),
     path('studentdetail/<int:pk>' , StudentDetailView.as_view() ,name = 'student_detail'),
-    path('generate_pdf/' , PdfGenerateView.as_view() , name = 'generate_pdf')
+    path('generate_pdf/<int:pk>/' , PdfGenerateView.as_view() , name = 'generate_pdf')
 ]
 
 

@@ -1,9 +1,11 @@
 from django.views.generic import FormView , TemplateView , DetailView , ListView , View
 from django.http import HttpResponse
 from .forms import StudentForm
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Student_Model , GradesModel
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .utils import generate_student_report
+from django.utils import timezone
 #import pdfkit
 
 
@@ -96,16 +98,17 @@ class StudentDetailView(LoginRequiredMixin , DetailView):
         return context
 
 
-class PdfGenerateView(View):
-    def get(self , request):
-        url = 'results.html'
-        options = {
-            'page-size':'letter',
-            'margin':'0in',
-            'encoding':'UTF-8',
-            'no-outline': None
-        }
-
-        #pdf = pdfkit.from_url(url , False , options=options)
-        #response = HttpResponse(pdf , content_type = 'application/pdf')
-        #response['Content-Disposition'] = 'attachment; file_name = "table.pdf"'
+class PdfGenerateView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        # Get student and grades
+        student = get_object_or_404(Student_Model, pk=pk)
+        grades = get_object_or_404(GradesModel, student=student)
+        
+        # Generate PDF
+        pdf = generate_student_report(student, grades)
+        
+        # Create response
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="{student.Name}_report_{timezone.now().strftime("%Y%m%d")}.pdf"'
+        response.write(pdf)
+        return response

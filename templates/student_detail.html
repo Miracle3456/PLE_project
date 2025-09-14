@@ -72,6 +72,9 @@
             <a href="{% url 'students_list' %}" class="action-button">
                 ← Back to Students
             </a>
+            <a href="{% url 'generate_pdf' description.pk %}" class="action-button download-button">
+                Download Report PDF
+            </a>
         </div>
     </div>
 {%endblock%}
