@@ -7,22 +7,38 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #fff6e5 0%, #ffd5b8 100%);
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 /* Form container styles */
 .form-1 {
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 400px;
     margin: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-1:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Form styles */
@@ -61,28 +77,29 @@ input::placeholder {
 
 /* Button styles */
 button {
-    background: #3498db;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
     color: white;
-    padding: 12px;
+    padding: 14px;
     border: none;
-    border-radius: 8px;
-    font-size: 1rem;
+    border-radius: 12px;
+    font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
     display: block;
     width: 100%;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
 }
 
 button:hover {
-    background: #2980b9;
+    background: linear-gradient(135deg, #ff8e53 0%, #ff6b6b 100%);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
 }
 
 button:active {
-    transform: translateY(0);
+    transform: translateY(1px);
 }
 
 /* Form below section styles */
