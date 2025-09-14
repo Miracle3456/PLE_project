@@ -58,13 +58,21 @@ def generate_student_report(student, grades):
     # Add student image if available
     if student.Student_image:
         try:
-            img_path = os.path.join(settings.MEDIA_ROOT, student.Student_image.name)
-            if os.path.exists(img_path):
-                img = Image(img_path, width=2*inch, height=2*inch)
+            # For production environment
+            if hasattr(student.Student_image, 'url'):
+                # Try to get the physical path first
+                img_path = student.Student_image.path
+                if not os.path.exists(img_path) and hasattr(student.Student_image, 'file'):
+                    # If physical path doesn't exist, try to read from storage
+                    img_data = BytesIO(student.Student_image.file.read())
+                    img = Image(img_data, width=2*inch, height=2*inch)
+                else:
+                    img = Image(img_path, width=2*inch, height=2*inch)
                 img.hAlign = 'CENTER'
                 story.append(img)
                 story.append(Spacer(1, 20))
-        except:
+        except Exception as e:
+            # Silently handle the error and continue without the image
             pass
 
     # Student Information in a more structured format

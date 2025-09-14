@@ -100,15 +100,26 @@ class StudentDetailView(LoginRequiredMixin , DetailView):
 
 class PdfGenerateView(LoginRequiredMixin, View):
     def get(self, request, pk):
-        # Get student and grades
-        student = get_object_or_404(Student_Model, pk=pk)
-        grades = get_object_or_404(GradesModel, student=student)
-        
-        # Generate PDF
-        pdf = generate_student_report(student, grades)
-        
-        # Create response
-        response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = f'attachment; filename="{student.Name}_report_{timezone.now().strftime("%Y%m%d")}.pdf"'
-        response.write(pdf)
-        return response
+        try:
+            # Get student and grades
+            student = get_object_or_404(Student_Model, pk=pk)
+            grades = get_object_or_404(GradesModel, student=student)
+            
+            # Generate PDF
+            pdf = generate_student_report(student, grades)
+            
+            # Create response
+            response = HttpResponse(content_type='application/pdf')
+            response['Content-Disposition'] = f'attachment; filename="{student.Name}_report_{timezone.now().strftime("%Y%m%d")}.pdf"'
+            response.write(pdf)
+            return response
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.error(f"PDF Generation Error: {str(e)}")
+            # Return a more informative error response
+            return HttpResponse(
+                f"Error generating PDF. Please contact support. Error: {str(e)}",
+                status=500,
+                content_type="text/plain"
+            )
