@@ -8,7 +8,7 @@ class Student_Model(models.Model):
     SCI = models.IntegerField(null=False)
     MTC = models.IntegerField(null=False)
     AGG = models.IntegerField(null=True)
-    TOTAL = models.IntegerField(null=True)
+    TOTAL = models.IntegerField(null=True, editable=False)  # Made editable=False since it's auto-calculated
     Grade = models.IntegerField(null=True)
     Student_image = models.ImageField(upload_to='images/images/', default='images/images/profile-icon.jpg')
     Date_Created = models.DateTimeField(auto_now_add=True , null=False)
@@ -21,7 +21,15 @@ class Student_Model(models.Model):
     def __str__(self):
         return self.Name
     
-  
+    def calculate_total(self):
+        """Calculate the total score from all subjects."""
+        self.TOTAL = self.SST + self.ENG + self.SCI + self.MTC
+        return self.TOTAL
+    
+    def save(self, *args, **kwargs):
+        """Override the save method to automatically calculate total."""
+        self.TOTAL = self.calculate_total()
+        super().save(*args, **kwargs)
     
 
 class GradesModel(models.Model):

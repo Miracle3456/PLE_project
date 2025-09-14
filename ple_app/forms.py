@@ -35,6 +35,7 @@ class StudentForm(forms.Form):
         ENG = eng_value
         MTC = mtc_value
 
+        sub_total = sum(SST , SCI , ENG , MTC)
         grades_dict = {}
         agg_list=[]
 
@@ -132,7 +133,8 @@ class StudentForm(forms.Form):
             'SST':SST,
             'SCI':SCI,
             'ENG':ENG,
-            'MTC':MTC
+            'MTC':MTC,
+            
 
 
             
