@@ -10,7 +10,7 @@ class Student_Model(models.Model):
     AGG = models.IntegerField(null=True)
     TOTAL = models.IntegerField(null=True)
     Grade = models.IntegerField(null=True)
-    Student_image = models.ImageField(null = True , upload_to='images/' , default = 'images/images/profile-icon.jpg')
+    Student_image = models.ImageField(upload_to='images/images/', default='images/images/profile-icon.jpg')
     Date_Created = models.DateTimeField(auto_now_add=True , null=False)
 
 
