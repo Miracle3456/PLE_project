@@ -70,7 +70,14 @@ class StudentView(LoginRequiredMixin,FormView):
             ENG_GRADE = subject_dict['ENG'])
             
 
-        return render(self.request , 'results.html',{'result':  result , 'form': form , 'agg_list' :agg_list , 'student_name' : student_name , 'grade' : grade } )
+        return render(self.request, 'results.html', {
+            'result': result,
+            'form': form,
+            'agg_list': agg_list,
+            'student_name': student_name,
+            'grade': grade,
+            'student_id': student_instance.id  # Add the student ID to the context
+        })
 
 class StudentResultView(TemplateView):
     template_name = 'results.html'
