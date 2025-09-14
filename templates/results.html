@@ -1,50 +1,54 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Student Results - {{student_name}}</title>
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
 </head>
 <body>
-    <a href="{%url 'home'%}"><button>Go Back</button></a>
-    <table border = '1'>
-        <thead >
-            <tr>
-                
-                <th style="border-right: none; border-top: none; border-left: none;">{{student_name}}</th>
-            </tr>
-            <tr>
-                <th>SUBJECT</th>
-                <th>GRADE</th>
+    <div class="back-button">
+        <a href="{% url 'home' %}"><button>← Go Back</button></a>
+    </div>
 
-            </tr>
-        </thead>
+    <div class="results-card">
+        <h1 class="student-name">{{student_name}}</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>SUBJECT</th>
+                    <th>GRADE</th>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
+                {% for value in result %}
+                <tr>
+                    <td>{{value.subject}}</td>
+                    <td>{{value.grade}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
             
+            <tfoot>
+                <tr>
+                    <td>TOTAL AGGREGATES</td>
+                    <td>{{agg_list}}</td>
+                </tr>
+                <tr>
+                    <td>GRADE</td>
+                    <td class="grade-cell">{{grade}}</td>
+                </tr>
+            </tfoot>
+        </table>
 
-            {%for value in result%}
-            <tr>
-                <td>{{value.subject}}</td>
-                <td>{{value.grade}}</td>
-            </tr>
-            {%endfor%}
-        </tbody>
-        <tfoot>
-            <tr style="font-weight: bold;">
-                <td>TOTAL AGGREGATES</td>
-                <td>{{agg_list}}</td>
-            </tr>
-            <tr style="font-weight: bold;">
-                <td>
-                    GRADE
-                </td>
-                <td style="font-weight: bold;">
-                    {{grade}}
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-    <a href="{%url 'generate_pdf'%}">Download</a>
+        <div style="text-align: center;">
+            <a href="{% url 'generate_pdf' %}" class="download-button">
+                Download Results PDF
+            </a>
+        </div>
+    </div>
 </body>
 </html>

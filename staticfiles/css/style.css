@@ -1,108 +1,155 @@
-.container{
+/* Global styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Navigation styles */
+.container {
     display: flex;
     flex-direction: row;
-    row-gap: 10px;
-    gap: 10px;
-    background-color: midnightblue;
-    color: aliceblue;
-    font-size: 15px;
-    border-radius: 5px;
-    justify-content: center;
+    gap: 20px;
+    background-color: #ffffff;
+    color: #2c3e50;
+    font-size: 16px;
+    padding: 1rem;
+    justify-content: space-between;
+    margin: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.item1, .item2 {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+/* Link styles */
+a {
     text-decoration: none;
-    margin: 10px;
+    color: #4a90e2;
+    transition: color 0.3s ease;
 }
 
-.item1{
-    align-items: left;
-    margin: 5px;
-    display: flex;
-    justify-content: left;
-
-}
-
-.item2{
-    align-items: right;
-    display: flex;
-    margin: 5px;
-    justify-content: right;
-}
-
-a{
+a:hover {
+    color: #357abd;
     text-decoration: none;
-    color: aliceblue;
 }
 
-a:hover{
-    text-decoration: underline yellow;
-}
-
-fieldset{
-    border-radius: 10px;
-    display: block;
-    flex-direction: column;
-    width: 50%;
-    margin: 0 auto;
-}
-
-input,label{
-    display: flex;
-    flex-direction: column;
-    
-    
-    margin: 0 auto;
-}
-
-input{
-    padding: 10px;
-    width: 300px ;
-    border-radius: 5px;
-    border: 1px solid;
-}
-
-
-button{
-    padding: 10px;
-    transition: transform 0.3s ease-in;
-    border-radius: 5px;
-    border: 1px solid;
-    background-color: green;
-    color: whitesmoke;
-    justify-content: center;
-    margin: 10px;
-}
-
-button:hover{
-    transform: scale(1.08);
-}
-
-.student{
-    color: black;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 20px;
-}
-
-.student a:hover{
-    text-decoration: underline;
-    
-}
-
-.student a{
-    color: black;
-}
-
-.student_detail{
+/* Form styles */
+fieldset {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
     width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-.table{
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    overflow: auto;
+input, label {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+}
 
+label {
+    color: #2c3e50;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+input {
+    padding: 12px 16px;
+    border: 2px solid #e1e1e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* Button styles */
+button {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 1rem 0;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+}
+
+button:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
+}
+
+/* Student list styles */
+.student {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.student:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.student a {
+    color: #2c3e50;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Table styles */
+.table {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    height: calc(100vh - 100px);
+    overflow: auto;
+}
+
+/* Success message styles */
+.success-message {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 500px;
+    margin: 2rem auto;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.success-message h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+}
+
+.success-message p {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
 }
 
 

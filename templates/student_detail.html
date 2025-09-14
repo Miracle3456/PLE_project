@@ -15,91 +15,65 @@
 
 {%block content%}
     <div class="student_detail">
-        
         <div class="head">
             <div class="student-info">
-
-            
-            <h3>ID:  {{description.id}}</h3>
-            <h3>Name: {{description.Name}}</h3>
-            <h3>Grade: {{description.Grade}}</h3>
+                <h3><strong>Student ID:</strong> {{description.id}}</h3>
+                <h3><strong>Name:</strong> {{description.Name}}</h3>
+                <h3><strong>Grade:</strong> {{description.Grade}}</h3>
             </div>
-            <div class="student-picture" >
-            <img src="{{description.Student_image.url}}" alt="" >
+            <div class="student-picture">
+                <img src="{{description.Student_image.url}}" alt="Student Photo">
             </div>
         </div>
 
         <div class="table">
-            <table border="1px">
+            <table>
                 <thead>
                     <tr>
                         <th>Subject</th>
-                        <th>Marks(/100)</th>
+                        <th>Marks (/100)</th>
                         <th>Grade</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {%for grade in grades%}
+                    {% for grade in grades|slice:":1" %}
                     <tr>
-                        
-                        <td>
-                            Science
-                        </td>       
+                        <td>Science</td>       
                         <td>{{description.SCI}}</td> 
-                        
                         <td>{{grade.SCI_GRADE}}</td>
-                        
-                                
-                        
                     </tr>
-                    {%endfor%}
-                    {%for grade in grades%}
                     <tr>
                         <td>Social Studies</td>
-                    
                         <td>{{description.SST}}</td>
-                        
                         <td>{{grade.SST_GRADE}}</td>
-                        
                     </tr>
-                    {%endfor%}
-                    {%for grade in grades%}
                     <tr>
                         <td>Mathematics</td>
                         <td>{{description.MTC}}</td>
-                        
                         <td>{{grade.MTC_GRADE}}</td>
-                        
                     </tr>
-                    {%endfor%}
-                    {%for grade in grades%}
                     <tr>
                         <td>English</td>
-                        
                         <td>{{description.ENG}}</td>
-                        
                         <td>{{grade.ENG_GRADE}}</td>
-                        
-
-                        
                     </tr>
-                    {%endfor%}
-                    {%for grade in grades%}
                     <tr>
-                        <td style="font-weight: bold;">Total</td>
-                    
+                        <td>Total</td>
                         <td>{{description.TOTAL}}</td>
-                    
-                        <td> {{description.AGG}}</td>
+                        <td>{{description.AGG}}</td>
                     </tr>
-                {%endfor%}
+                    {% endfor %}
                 </tbody>
-        </table> 
+            </table> 
         </div>
-        
+
+        <div class="action-buttons">
+            <a href="{% url 'students_list' %}" class="action-button">
+                ← Back to Students
+            </a>
+        </div>
     </div>
-   
 {%endblock%}
 </body>
 </html>

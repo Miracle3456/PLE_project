@@ -1,28 +1,160 @@
-.head{
+/* Main container */
+.student_detail {
+    background-color: #f5f7fa;
+    padding: 2rem;
+    min-height: calc(100vh - 64px); /* Adjust for navbar */
+}
+
+/* Student info header */
+.head {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    gap: 2rem;
 }
 
-
-
-img{
-    width: 50%;
-    height: 50%;
-    float: right;
+.student-info {
+    flex: 1;
 }
 
-.student_detail{
-    max-width: 80%;
-    margin: 0 auto;
+.student-info h3 {
+    color: #2c3e50;
+    margin: 0.75rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
 }
 
-.student-info{
-    margin-right: 5px;
-    padding: 10px;
+.student-info h3 strong {
+    font-weight: 600;
+    margin-right: 0.5rem;
 }
 
-.student-picture{
-    width: 50%;
+.student-picture {
+    flex: 0 0 200px;
+    text-align: center;
+}
+
+.student-picture img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styles */
+.table {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #2c3e50;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+td {
+    color: #2c3e50;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Total row styling */
+tbody tr:last-child {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Grade cell styling */
+td:last-child {
+    font-weight: 600;
+    color: #4a90e2;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .student_detail {
+        padding: 1rem;
+    }
+
+    .head {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.5rem;
+    }
+
+    .student-picture {
+        order: -1;
+    }
+
+    .student-info h3 {
+        font-size: 1rem;
+    }
+
+    .table {
+        padding: 1rem;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+}
+
+/* Action buttons */
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.action-button {
+    background-color: #4a90e2;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+}
+
+.action-button:hover {
+    background-color: #357abd;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(74, 144, 226, 0.3);
 }
