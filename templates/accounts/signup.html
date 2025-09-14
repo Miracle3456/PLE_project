@@ -11,13 +11,16 @@
     <div class="signup">
         
         <div class="form">
-            <h1>SignUp</h1>
-            {%csrf_token%}
-            <input type="text" placeholder="Enter Username" name="username" value="{{form.username.value|default:''}}" >
-            <input type="text" placeholder="Enter Password" name = "password1" value="{{form.password1.value|default:''}}">
-            <input type="text" placeholder="Confirm Password" name = "password2" value="{{form.password2.value|default:''}}">
+            <form action="{%url 'home'%}" method="post">
+                {%csrf_token%}
+                <h1>SignUp</h1>
+                
+                <input type="text" placeholder="Enter Username" name="username" value="{{form.username.value|default:''}}" >
+                <input type="text" placeholder="Enter Password" name = "password1" value="{{form.password1.value|default:''}}">
+                <input type="text" placeholder="Confirm Password" name = "password2" value="{{form.password2.value|default:''}}">
 
-            <button type="submit">Submit</button>
+                <button type="submit">Submit</button>
+            </form>
         </div>
         <div class="form2">
             <p>Have account | <a href="{%url 'login'%}">Login</a></p>
